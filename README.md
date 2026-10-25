@@ -2,90 +2,86 @@
 
 A portfolio project for analyzing customer-support tickets, measuring service-level agreement (SLA) performance, and exploring ticket classification with Python, PostgreSQL, scikit-learn, and Streamlit.
 
-> **Project status:** Initial repository setup. The database schema is provisional until the selected Hugging Face dataset's actual files, columns, and data quality have been inspected. No model metrics or business findings are claimed yet.
+> **Current stage:** A runnable Streamlit demo is available using a small, hand-authored synthetic dataset. It is not the selected Hugging Face dataset, and its metrics are illustrative only. The database schema remains provisional until the real dataset is inspected.
 
-## Goals
+## Try the demo locally
 
-- Inspect and clean a public support-ticket dataset with reproducible Python code.
-- Store ticket records and supporting reference data in PostgreSQL.
-- Analyze ticket volume by category, resolution time, SLA performance, and busy periods.
-- Build and honestly evaluate a ticket category/priority classifier.
-- Present useful filters, metrics, and charts in a Streamlit dashboard.
-- Document decisions, limitations, tests, and reproducible run instructions.
+Requirements: Python 3.11+.
 
-## Planned stack
+```bash
+git clone https://github.com/prajjwal-ptl/project1.git
+cd project1
+python -m venv .venv
 
-- Python 3.11+
-- pandas and NumPy
-- PostgreSQL
-- scikit-learn
-- Streamlit
-- pytest
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+
+# macOS/Linux (use this instead of the Windows command)
+source .venv/bin/activate
+
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Streamlit will print a local address (usually `http://localhost:8501`) to open in your browser. No PostgreSQL connection or dataset download is required for this demo.
+
+## Demo features
+
+- Filters for category, priority, status, and created-date range
+- KPI cards for tickets in view, illustrative SLA breach-flag rate, average resolution time, and average first-response time
+- Ticket volume by category
+- Average resolution time by category
+- SLA breach-flag rate by priority
+- Ticket volume by hour of day
+- Filtered ticket table
+
+## Demo-data warning
+
+The bundled `data/demo_tickets.csv` contains synthetic examples created for interface demonstration. It is not extracted from the Hugging Face dataset and does not establish real customer-support performance. Do not present these values as measured business findings. The sample SLA flag is illustrative and is not a contractual SLA calculation.
 
 ## Repository structure
 
 ```text
 .
+├── app.py
+├── data/
+│   └── demo_tickets.csv
 ├── docs/
 │   └── design-decisions.md
 ├── sql/
 │   └── schema.sql
-├── src/                 # Data pipeline, analysis, model, and dashboard will be added in later stages
-├── tests/               # Tests will be added alongside implementation
+├── tests/
+│   └── test_demo_data.py
 ├── .gitignore
 ├── requirements.txt
 └── README.md
 ```
 
-## Data source
+## Project goals
 
-Selected candidate: [Hugging Face support-ticket dataset](https://huggingface.co/datasets/s2pidape/support-ticket-dataset).
-
-Before using it for analysis, inspect the dataset card, available configurations/files, schema, licensing, missingness, duplicates, timestamp validity, and whether SLA labels/targets are present. Do not assume all expected columns exist. Use a manageable sample first rather than loading a potentially large dataset into memory at once.
-
-## Initial database design
-
-The provisional schema in [sql/schema.sql](sql/schema.sql) contains:
-
-- `categories`: normalized category lookup
-- `agents`: agent/team lookup
-- `sla_rules`: response and resolution targets by priority
-- `tickets`: ticket-level source and derived fields
-- `sla_evaluations`: auditable, separate first-response and resolution SLA evaluations
-
-The schema must be revised after inspecting the real dataset. Preserve source-provided SLA fields separately from independently calculated results.
-
-## Planned workflow
-
-1. Inspect the dataset and confirm its license and actual columns.
+1. Inspect the selected public support-ticket dataset and confirm its actual files, fields, license, and quality.
 2. Adapt and validate the PostgreSQL schema.
 3. Build a documented cleaning and loading pipeline.
-4. Write and explain the core SQL analytics.
-5. Train and evaluate a leakage-aware classifier.
-6. Build the Streamlit dashboard.
+4. Write and explain SQL analytics.
+5. Train and evaluate a leakage-aware category/priority classifier.
+6. Extend the dashboard to use validated data.
 7. Record evidence-backed business insights.
 8. Add tests, screenshots, and complete run instructions.
-9. Deploy the dashboard and document its live URL.
+9. Deploy the dashboard and document the live URL.
 
-## Setup
+## Data source candidate
 
-Create and activate a virtual environment, then install dependencies:
+[Hugging Face support-ticket dataset](https://huggingface.co/datasets/s2pidape/support-ticket-dataset). Its available files, schema, license, row count, and labels must be inspected before use. Do not assume the source contains every field in the provisional SQL design.
+
+## Tests
 
 ```bash
-python -m venv .venv
-# Windows PowerShell:
-.venv\Scripts\Activate.ps1
-# macOS/Linux:
-source .venv/bin/activate
-
-pip install -r requirements.txt
+pytest
 ```
 
-Set PostgreSQL connection details through environment variables or a local, untracked `.env` file. Never commit passwords, API keys, tokens, or real customer data.
+## Safety and reproducibility
 
-## Current limitations
-
-- Dataset fields and licensing have not yet been verified in code.
-- SQL schema is a starting design, not a validated mapping to the source dataset.
-- Cleaning, analytics, model training, dashboard, tests, and deployment are not implemented yet.
-- No performance numbers or business conclusions should be reported until measured from the data.
+- Never commit passwords, API keys, tokens, or local `.env` files.
+- Avoid personal details unless essential; use public or synthetic data.
+- Preserve source-provided SLA fields separately from independently calculated evaluations.
+- Do not claim model performance or business findings until they are measured and documented.
