@@ -1,0 +1,31 @@
+ticket_id,created_at,category,priority,status,first_response_minutes,resolution_minutes,sla_breached,sentiment,agent
+DEMO-001,2026-10-01 08:15:00,Billing,high,resolved,18,210,true,negative,A. Patel
+DEMO-002,2026-10-01 09:42:00,Technical Support,urgent,resolved,4,95,false,negative,R. Sharma
+DEMO-003,2026-10-01 11:05:00,Account Access,medium,resolved,35,360,false,neutral,S. Khan
+DEMO-004,2026-10-01 13:28:00,Delivery,low,resolved,72,780,false,neutral,M. Roy
+DEMO-005,2026-10-01 15:50:00,Technical Support,high,in_progress,22,,false,negative,R. Sharma
+DEMO-006,2026-10-02 08:03:00,Billing,medium,resolved,27,300,false,neutral,A. Patel
+DEMO-007,2026-10-02 09:11:00,Refunds,high,resolved,16,510,true,negative,M. Roy
+DEMO-008,2026-10-02 10:34:00,Account Access,urgent,resolved,3,62,false,negative,S. Khan
+DEMO-009,2026-10-02 12:46:00,Technical Support,medium,resolved,41,420,false,neutral,R. Sharma
+DEMO-010,2026-10-02 16:17:00,Delivery,low,open,,,false,neutral,M. Roy
+DEMO-011,2026-10-03 08:29:00,Refunds,medium,resolved,29,400,false,negative,A. Patel
+DEMO-012,2026-10-03 09:55:00,Billing,urgent,resolved,6,145,false,negative,A. Patel
+DEMO-013,2026-10-03 11:23:00,Technical Support,high,resolved,19,680,true,negative,R. Sharma
+DEMO-014,2026-10-03 14:07:00,Account Access,low,resolved,55,250,false,positive,S. Khan
+DEMO-015,2026-10-03 17:42:00,Delivery,medium,pending,44,,false,neutral,M. Roy
+DEMO-016,2026-10-04 08:41:00,Billing,high,resolved,14,190,false,negative,A. Patel
+DEMO-017,2026-10-04 10:02:00,Refunds,urgent,resolved,5,130,false,negative,M. Roy
+DEMO-018,2026-10-04 12:19:00,Technical Support,medium,resolved,32,355,false,neutral,R. Sharma
+DEMO-019,2026-10-04 14:53:00,Account Access,high,resolved,21,480,true,negative,S. Khan
+DEMO-020,2026-10-04 18:06:00,Delivery,low,resolved,68,720,false,positive,M. Roy
+DEMO-021,2026-10-05 08:12:00,Technical Support,urgent,resolved,4,88,false,negative,R. Sharma
+DEMO-022,2026-10-05 09:37:00,Billing,medium,resolved,26,330,false,neutral,A. Patel
+DEMO-023,2026-10-05 11:48:00,Refunds,high,in_progress,17,,false,negative,M. Roy
+DEMO-024,2026-10-05 13:21:00,Account Access,medium,resolved,39,390,false,neutral,S. Khan
+DEMO-025,2026-10-05 15:04:00,Technical Support,high,resolved,23,615,true,negative,R. Sharma
+DEMO-026,2026-10-06 08:34:00,Delivery,medium,resolved,31,410,false,positive,M. Roy
+DEMO-027,2026-10-06 10:16:00,Billing,urgent,resolved,7,155,false,negative,A. Patel
+DEMO-028,2026-10-06 12:38:00,Refunds,low,resolved,61,600,false,neutral,M. Roy
+DEMO-029,2026-10-06 14:42:00,Technical Support,medium,open,,,false,neutral,R. Sharma
+DEMO-030,2026-10-06 17:15:00,Account Access,high,resolved,20,500,true,negative,S. Khan
